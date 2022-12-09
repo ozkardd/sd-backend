@@ -21,5 +21,5 @@ app.use((0, cors_1.default)(config_1.corsOptions));
 app.use((0, cookie_parser_1.default)());
 app.use((0, helmet_1.default)());
 app.use(passport_1.default.initialize());
-app.use('/', index_routes_1.default);
+app.use('/grogupay/api', index_routes_1.default);
 exports.default = app;

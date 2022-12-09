@@ -25,6 +25,6 @@ app.use(cookieParser())
 app.use(helmet())
 
 app.use(passport.initialize())
-app.use('/', routes)
+app.use('/grogupay/api', routes)
 
 export default app

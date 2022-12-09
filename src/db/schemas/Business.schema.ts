@@ -36,7 +36,7 @@ const BusinessSchema = new Schema<IBusiness>(
 			default: [],
 			autopopulate: true,
     }
-  }
+  },{ versionKey: false, timestamps: true }
 )
 
 BusinessSchema.plugin(require('mongoose-autopopulate'))

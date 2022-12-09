@@ -35,6 +35,6 @@ const BusinessSchema = new mongoose_1.Schema({
         default: [],
         autopopulate: true,
     }
-});
+}, { versionKey: false, timestamps: true });
 BusinessSchema.plugin(require('mongoose-autopopulate'));
 exports.default = (0, mongoose_1.model)('business', BusinessSchema);
