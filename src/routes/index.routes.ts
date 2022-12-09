@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import userRoutes from './user.routes'
+import businessRoutes from './business.routes'
 
 
 import { NotFoundException } from '../exceptions'
@@ -8,6 +9,7 @@ import { NotFoundException } from '../exceptions'
 const router = Router()
 
 router.use('/users', userRoutes)
+router.use('/business', businessRoutes)
 
 router.use('*', (_req, _res, next) => {
 	return next(
