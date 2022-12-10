@@ -28,6 +28,6 @@ const paymentController = __importStar(require("../controllers/payment.controlle
 const requests_1 = require("../middlewares/validators/requests");
 const PaymentObject_dto_1 = require("../db/schemas/dtos/PaymentObject.dto");
 const router = (0, express_1.Router)();
-router.post('/pay', [(0, requests_1.requestBodyValidation)(PaymentObject_dto_1.PaymentObjectDto)], paymentController.RegisterPayment);
+router.post('/', [(0, requests_1.requestBodyValidation)(PaymentObject_dto_1.PaymentObjectDto)], paymentController.RegisterPayment);
 router.get('/', paymentController.GetAllPayments);
 exports.default = router;
