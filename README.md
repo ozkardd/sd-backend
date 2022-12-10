@@ -7,7 +7,11 @@
 4. Habilitar la opcion de despliegue automatico
 
 # sd-backend
+
 Sistemas Distribuidos - ws
+
+
+# Pasos para correr el programa
 
 1. npm run build
 2. npm start (prod)
