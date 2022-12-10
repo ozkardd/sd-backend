@@ -28,3 +28,17 @@ export const RegisterPayment = async (
 		)
 	}
 }
+
+export const GetAllPayments = async (
+  next: NextFunction
+) => {
+	try {
+		return await Payment.find({})
+	} catch (e: any) {
+		return next(
+			new InternalServerException(
+				`There was an unexpected error with the GetAllPayments service. ${e.message}`,
+			),
+		)
+	}
+}

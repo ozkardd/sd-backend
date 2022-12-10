@@ -9,4 +9,10 @@ router.post(
 	paymentController.RegisterPayment,
 )
 
+router.get(
+	'/pay_history',
+	paymentController.GetAllPayments,
+)
+
+
 export default router

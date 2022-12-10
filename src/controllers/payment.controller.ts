@@ -29,3 +29,27 @@ export const RegisterPayment = async (
 		)
 	}
 }
+
+export const GetAllPayments = async (
+	_req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	try {
+		const payment = await paymentService.GetAllPayments(next)
+    const outDto: ObjectOutDto = {
+      data: payment,
+      resultCode: 200,
+      message: 'Ok'
+    }
+		return res
+			.status(200)
+			.send(outDto)
+	} catch (e: any) {
+		return next(
+			new InternalServerException(
+				`There was an unexpected error with the GetAllPayments controller. ${e.message}`,
+			),
+		)
+	}
+}

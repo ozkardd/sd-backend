@@ -32,7 +32,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterPayment = void 0;
+exports.GetAllPayments = exports.RegisterPayment = void 0;
 const exceptions_1 = require("../exceptions");
 const paymentService = __importStar(require("../services/Payment.service"));
 const RegisterPayment = (_req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -53,3 +53,20 @@ const RegisterPayment = (_req, res, next) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.RegisterPayment = RegisterPayment;
+const GetAllPayments = (_req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const payment = yield paymentService.GetAllPayments(next);
+        const outDto = {
+            data: payment,
+            resultCode: 200,
+            message: 'Ok'
+        };
+        return res
+            .status(200)
+            .send(outDto);
+    }
+    catch (e) {
+        return next(new exceptions_1.InternalServerException(`There was an unexpected error with the GetAllPayments controller. ${e.message}`));
+    }
+});
+exports.GetAllPayments = GetAllPayments;

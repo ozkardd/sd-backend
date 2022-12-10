@@ -27,4 +27,5 @@ const express_1 = require("express");
 const paymentController = __importStar(require("../controllers/payment.controller"));
 const router = (0, express_1.Router)();
 router.post('/pay', paymentController.RegisterPayment);
+router.get('/pay_history', paymentController.GetAllPayments);
 exports.default = router;

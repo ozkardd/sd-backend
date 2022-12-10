@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterPayment = void 0;
+exports.GetAllPayments = exports.RegisterPayment = void 0;
 const exceptions_1 = require("../exceptions");
 const Payment_schema_1 = __importDefault(require("../db/schemas/Payment.schema"));
 const RegisterPayment = (paymentInfo, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -32,3 +32,12 @@ const RegisterPayment = (paymentInfo, next) => __awaiter(void 0, void 0, void 0,
     }
 });
 exports.RegisterPayment = RegisterPayment;
+const GetAllPayments = (next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return yield Payment_schema_1.default.find({});
+    }
+    catch (e) {
+        return next(new exceptions_1.InternalServerException(`There was an unexpected error with the GetAllPayments service. ${e.message}`));
+    }
+});
+exports.GetAllPayments = GetAllPayments;
