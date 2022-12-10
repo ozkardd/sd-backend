@@ -25,7 +25,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const paymentController = __importStar(require("../controllers/payment.controller"));
+const requests_1 = require("../middlewares/validators/requests");
+const PaymentObject_dto_1 = require("../db/schemas/dtos/PaymentObject.dto");
 const router = (0, express_1.Router)();
-router.post('/pay', paymentController.RegisterPayment);
+router.post('/pay', [(0, requests_1.requestBodyValidation)(PaymentObject_dto_1.PaymentObjectDto)], paymentController.RegisterPayment);
 router.get('/', paymentController.GetAllPayments);
 exports.default = router;
