@@ -29,9 +29,7 @@ export const RegisterPayment = async (
 	}
 }
 
-export const GetAllPayments = async (
-  next: NextFunction
-) => {
+export const GetAllPayments = async (next: NextFunction) => {
 	try {
 		return await Payment.find({})
 	} catch (e: any) {
