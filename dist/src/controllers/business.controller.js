@@ -32,7 +32,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterBusiness = exports.GetAllBussinessServices = void 0;
+exports.GetAllServicesUsers = exports.RegisterBusiness = exports.GetAllBussinessServices = void 0;
 const exceptions_1 = require("../exceptions");
 const businessService = __importStar(require("../services/Business.service"));
 const GetAllBussinessServices = (_req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -70,3 +70,21 @@ const RegisterBusiness = (_req, res, next) => __awaiter(void 0, void 0, void 0, 
     }
 });
 exports.RegisterBusiness = RegisterBusiness;
+const GetAllServicesUsers = (_req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { _id } = _req.params;
+    try {
+        const payment = yield businessService.GetAllServicesUsers(next, _id);
+        const outDto = {
+            data: payment,
+            resultCode: 200,
+            message: 'Ok'
+        };
+        return res
+            .status(200)
+            .send(outDto);
+    }
+    catch (e) {
+        return next(new exceptions_1.InternalServerException(`There was an unexpected error with the RegisterBusiness controller. ${e.message}`));
+    }
+});
+exports.GetAllServicesUsers = GetAllServicesUsers;

@@ -53,3 +53,28 @@ export const RegisterBusiness = async (
 		)
 	}
 }
+
+export const GetAllServicesUsers = async (
+	_req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+  const { _id } = _req.params
+	try {
+		const payment = await businessService.GetAllServicesUsers(next, _id)
+		const outDto: ObjectOutDto = {
+      data: payment,
+      resultCode: 200,
+      message: 'Ok'
+    }
+		return res
+			.status(200)
+			.send(outDto)
+	} catch (e: any) {
+		return next(
+			new InternalServerException(
+				`There was an unexpected error with the RegisterBusiness controller. ${e.message}`,
+			),
+		)
+	}
+}

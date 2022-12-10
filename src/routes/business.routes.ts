@@ -9,6 +9,11 @@ router.get(
 	businessController.GetAllBussinessServices,
 )
 
+router.get(
+	'/:_id',
+	businessController.GetAllServicesUsers,
+)
+
 router.post(
 	'/',
 	businessController.RegisterBusiness,

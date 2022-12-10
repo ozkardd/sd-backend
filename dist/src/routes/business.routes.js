@@ -27,5 +27,6 @@ const express_1 = require("express");
 const businessController = __importStar(require("../controllers/business.controller"));
 const router = (0, express_1.Router)();
 router.get('/', businessController.GetAllBussinessServices);
+router.get('/:_id', businessController.GetAllServicesUsers);
 router.post('/', businessController.RegisterBusiness);
 exports.default = router;

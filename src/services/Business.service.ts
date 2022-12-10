@@ -7,6 +7,7 @@ import {
 	BadRequestException,
 } from '../exceptions'
 import Business from '../db/schemas/Business.schema'
+import Payment from '../db/schemas/Payment.schema'
 import { BusinessObjectDto } from '../db/schemas/dtos/BusinessObject.dto'
 
 export const GetAllBusinessServices = async (next: NextFunction) => {
@@ -36,6 +37,18 @@ export const RegisterBusiness = async (
 		return next(
 			new InternalServerException(
 				`There was an unexpected error with the RegisterBusiness service. ${e.message}`,
+			),
+		)
+	}
+}
+
+export const GetAllServicesUsers = async (next: NextFunction, _id: string) => {
+	try {
+		return await Payment.find({businessId: _id})
+	} catch (e: any) {
+		return next(
+			new InternalServerException(
+				`There was an unexpected error with the GetAllPayments service. ${e.message}`,
 			),
 		)
 	}
