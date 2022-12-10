@@ -10,7 +10,7 @@ router.post(
 )
 
 router.get(
-	'/pay_history',
+	'/',
 	paymentController.GetAllPayments,
 )
 
